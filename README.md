@@ -337,7 +337,8 @@ The project includes **30 comprehensive tests** covering:
 
 All tests pass successfully:
 
-![Test Results](docs/images/test-results.png)
+<img width="936" height="596" alt="image" src="https://github.com/user-attachments/assets/
+dae4a2fe-c2f9-44e7-b24b-371b35657b81" />
 
 **Test Summary:**
 - ✅ **30 tests passing** in ~542ms
