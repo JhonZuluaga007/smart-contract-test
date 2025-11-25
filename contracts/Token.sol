@@ -24,17 +24,12 @@ contract Token is ERC20, IMintableToken, IDividends, ReentrancyGuard {
   // ----- END: DO NOT EDIT THIS SECTION ------ //  
   // ------------------------------------------ //
 
-  // Events
   event Mint(address indexed account, uint256 amount);
   event Burn(address indexed account, uint256 amount, address indexed destination);
   event DividendRecorded(uint256 totalAmount, uint256 totalSupply);
   event DividendWithdrawn(address indexed payee, uint256 amount, address indexed destination);
 
   constructor() ERC20("Test token", "TEST") {}
-
-  // IERC20 - Inherited from OpenZeppelin ERC20
-
-  // IMintableToken
 
   /**
    * @dev Mint tokens by depositing ETH.
@@ -59,17 +54,12 @@ contract Token is ERC20, IMintableToken, IDividends, ReentrancyGuard {
     uint256 balance = balanceOf(msg.sender);
     require(balance > 0, "Token: No tokens to burn");
     
-    // Checks-Effects-Interactions pattern
     _burn(msg.sender, balance);
     _removeHolder(msg.sender);
-    
-    // Safe transfer using OpenZeppelin Address library
     Address.sendValue(dest, balance);
     
     emit Burn(msg.sender, balance, dest);
   }
-
-  // IDividends
 
   /**
    * @dev Get the number of token holders with non-zero balance.
@@ -107,16 +97,12 @@ contract Token is ERC20, IMintableToken, IDividends, ReentrancyGuard {
       address holder = _tokenHolders[i];
       uint256 holderBalance = balanceOf(holder);
       
-      // Skip holders with zero balance (shouldn't happen, but defensive)
       if (holderBalance == 0) continue;
       
       uint256 dividendAmount = (msg.value * holderBalance) / totalSupply_;
       _dividendBalances[holder] += dividendAmount;
       totalDistributed += dividendAmount;
     }
-    
-    // Note: Any remaining wei (msg.value - totalDistributed) stays in contract
-    // This is acceptable as it's typically < 1 wei per holder due to rounding
     
     emit DividendRecorded(msg.value, totalSupply_);
   }
@@ -140,16 +126,11 @@ contract Token is ERC20, IMintableToken, IDividends, ReentrancyGuard {
     uint256 dividendAmount = _dividendBalances[msg.sender];
     require(dividendAmount > 0, "Token: No dividend to withdraw");
     
-    // Checks-Effects-Interactions pattern
     _dividendBalances[msg.sender] = 0;
-    
-    // Safe transfer using OpenZeppelin Address library
     Address.sendValue(dest, dividendAmount);
     
     emit DividendWithdrawn(msg.sender, dividendAmount, dest);
   }
-
-  // Override transfer functions to track holders
 
   /**
    * @dev Override transfer to track holders.
@@ -168,8 +149,6 @@ contract Token is ERC20, IMintableToken, IDividends, ReentrancyGuard {
     _updateHolders(from, to);
     return result;
   }
-
-  // Internal functions
 
   /**
    * @dev Add a holder to the list if not already present.
