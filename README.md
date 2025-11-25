@@ -115,7 +115,8 @@ El proyecto incluye **30 tests** que cubren:
 
 Todos los tests pasan exitosamente:
 
-![Resultados de Tests](docs/images/test-results.png)
+<img width="936" height="596" alt="image" src="https://github.com/user-attachments/assets/dae4a2fe-c2f9-44e7-b24b-371b35657b81" />
+
 
 **Resumen de Tests:**
 - ✅ **30 tests pasando** en ~542ms
