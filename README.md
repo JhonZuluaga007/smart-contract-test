@@ -111,6 +111,21 @@ El proyecto incluye **30 tests** que cubren:
 - Sistema de dividendos (distribución, compuestos, retiros)
 - Validaciones de seguridad (direcciones cero, balances, índices)
 
+#### Resultados de los Tests
+
+Todos los tests pasan exitosamente:
+
+![Resultados de Tests](docs/images/test-results.png)
+
+**Resumen de Tests:**
+- ✅ **30 tests pasando** en ~542ms
+- ✅ Deployment: 2 tests
+- ✅ Minting: 5 tests
+- ✅ Burning: 5 tests
+- ✅ Transfers: 4 tests
+- ✅ Dividends: 12 tests
+- ✅ Security: 3 tests
+
 ### Desplegar Contratos
 
 1. Iniciar un nodo Hardhat local:
