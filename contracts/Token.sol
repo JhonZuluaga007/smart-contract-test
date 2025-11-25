@@ -14,15 +14,9 @@ import {IDividends} from "./IDividends.sol";
  * Token holders can receive dividend payments in ETH proportional to their token balance.
  */
 contract Token is ERC20, IMintableToken, IDividends, ReentrancyGuard {
-  // ------------------------------------------ //
-  // ----- BEGIN: DO NOT EDIT THIS SECTION ---- //
-  // ------------------------------------------ //
   address[] private _tokenHolders;
   mapping(address => bool) private _isHolder;
   mapping(address => uint256) private _dividendBalances;
-  // ------------------------------------------ //
-  // ----- END: DO NOT EDIT THIS SECTION ------ //  
-  // ------------------------------------------ //
 
   event Mint(address indexed account, uint256 amount);
   event Burn(address indexed account, uint256 amount, address indexed destination);
