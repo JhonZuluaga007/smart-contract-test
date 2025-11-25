@@ -1,0 +1,45 @@
+{
+  "name": "smart-contract",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Smart Contract project with Hardhat 3, TypeScript and OpenZeppelin Contracts 5.x",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf ./artifacts ./cache ./typechain-types",
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "test:coverage": "hardhat coverage",
+    "deploy": "hardhat run scripts/deploy.ts --network localhost",
+    "node": "hardhat node",
+    "lint": "solhint --config ./.solhint.json contracts/**/*.sol"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^2.1.0",
+    "@nomicfoundation/hardhat-ethers": "^3.1.2",
+    "@nomicfoundation/hardhat-network-helpers": "^1.1.2",
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "@nomicfoundation/hardhat-verify": "^2.1.3",
+    "@typechain/ethers-v6": "^0.5.1",
+    "@typechain/hardhat": "^9.1.0",
+    "@types/chai": "^4.3.18",
+    "@types/mocha": "^10.0.7",
+    "@types/node": "^22.10.2",
+    "chai": "^4.4.1",
+    "ethers": "^6.13.0",
+    "hardhat": "^2.22.0",
+    "hardhat-gas-reporter": "^1.0.10",
+    "rimraf": "^6.0.1",
+    "solhint": "^5.1.3",
+    "solidity-coverage": "^0.8.11",
+    "ts-node": "^10.9.2",
+    "typechain": "^8.3.2",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.1.0"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}
